@@ -18,9 +18,10 @@ function Gallery() {
 
   console.log(photoCollect)
   return (
+    
     <div className="parent">
         {photoCollect.map((data) => (
-         <Photos key={data.id} id={data.id} url={data.url} />
+          data?<Photos key={data.id} id={data.id} url={data.url} />:<h1 key="">Server Error</h1>
       ))}
    
     </div>

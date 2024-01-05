@@ -9,7 +9,7 @@ import "./Birddetails.css"
 
     async function downloadPhotos(){
         const response=await axios.get(`https://api.slingacademy.com/v1/sample-data/photos/${id}`)
-        console.log(response.data)
+       // console.log(response.data)
         setPhotos({
             description:response.data.photo.description,
             title:response.data.photo.title,
@@ -22,14 +22,23 @@ import "./Birddetails.css"
     },[])
     
       return(
-        <div className="parent1">
-            <img src={photos.url}/>
-            <div className="details">
-            <h1 className="title">{photos.title}</h1>
-            <p className="description">{photos.description}</p>
-            </div>
+        <>
+            {
+                (photos.url && photos.description && photos.title)?(
+                    <div className="parent1">
+                    <img src={photos.url}/>
+                  <div className="details">
+                <h1 className="title">{photos.title}</h1>
+                <p className="description">{photos.description}</p>
+                </div>
+                </div>
+                ):<p>Please wait................</p>
+               
+            }
+            
+           </> 
          
-        </div>
+       
       )
  }
 
